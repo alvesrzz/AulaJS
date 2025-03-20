@@ -45,3 +45,15 @@ function ex5(lado)
 
     document.getElementById("mensagem5").innerHTML = "O lado do quadrado é " + lado + "<br><br><b>A area do quadrado é : " + areaQuadrado + "</b>";
 }
+
+function ex6(produto,preco)
+{
+    produto = document.getElementById("produto").value;
+    preco = document.getElementById("preco").value;
+
+    let subtotal = Number(produto) * Number(preco);
+    let desconto = Number(subtotal) * 0.10;
+    let valorFinal = (Number(subtotal) - Number(desconto));
+
+    document.getElementById("mensagem6").innerHTML = "Subtotal: " + subtotal + "<br>Desconto em 10%: " + desconto + "<br>Valor final: " + valorFinal;
+}
