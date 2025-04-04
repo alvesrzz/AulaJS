@@ -42,32 +42,52 @@ function ex9(salario){
 }
 
 function ex10(cod,quantidade){
-    cod = document.getElementById("cod").value;
-    quantidade = document.getElementById("quantidade").value;
-    let descricao;
-    let preco;
-    let ValorTotal;
-    if (cod = 5){
-        descricao = "Tênis Nike";
-        preco = 500;
-        ValorTotal = preco * quantidade;
-        document.getElementById("mensagem10").innerHTML = descricao + "<br> Preço: " + preco + "<br>Valor total: " + ValorTotal; 
-    }
-    if (cod= 10){
-        descricao = "Tênis Adidas";
-        preco = 300;
+    cod = Number(document.getElementById("cod").value);
+    quantidade = Number(document.getElementById("quantidade").value);
+    switch (cod){
+        case 5:
+            descricao = "Tênis Nike";
+            preco = 500;
+        break;
+        case 10:
+            descricao = "Tênis Adidas";
+            preco = 300;
+        default:
+            document.getElementById("mensagem10").innerHTML = "Código invalido";
+        }
         ValorTotal = preco * quantidade;
         document.getElementById("mensagem10").innerHTML = descricao + "<br> Preço: " + preco + "<br>Valor total: " + ValorTotal;
-    }
-    else {
-        document.getElementById("mensagem10").innerHTML = "Código invalido";
-    }
+
 }
 
 function ex11(quantidade,preco,cod){
-    quantidade = document.getElementById("quantidade").value;
-    preco = document.getElementById("preco").value;
-    cod = document.getElementById("cod").value;
-    
-    
+    quantidade = Number(document.getElementById("quantidade").value);
+    preco = Number(document.getElementById("preco").value);
+    cod = Number(document.getElementById("cod").value);
+    switch(true){
+        case (cod ===1):
+            procedencia = "Sul";
+            frete = 10;
+        break;
+        case (cod === 2):
+            procedencia = "Norte";
+            frete = 50;
+        break;
+        case (cod === 3 || cod === 5):
+            procedencia = "Nordeste";
+            frete = 30;
+        break;
+        case (cod >= 6 && cod <=9):
+            procedencia = "Sudeste";
+            frete = 40;
+        break;
+        case (cod >= 10 && cod <=15 || cod >=25 && cod<=30):
+            procedencia = "Centro Oeste";
+            frete = 85;
+        default:
+            document.getElementById("mensagem11").innerHTML = "código invalido"
+    }
+    ValorSubTotal = quantidade * preco;
+    ValorTotal = ValorSubTotal + frete;
+    document.getElementById("mensagem11").innerHTML = "Código de Origem: " + cod +"<br>Quantidade: " + quantidade + "<br>Preço de Venda: R$ " + preco + ",00<br> Valor SubTotal: R$ " + ValorSubTotal + ",00<br>Valor do frete: R$ " + frete + ",00<br>Valor Total a pagar: R$ " + ValorTotal + ",00";
 }
